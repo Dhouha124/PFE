@@ -1,0 +1,36 @@
+{
+  "Header": {
+    "title": "Chaque autopsie raconte une histoire, une vérité silencieuse",
+    "paragraph": "Gérer efficacement les autopsies et les expertises médico-légales pour une administration simplifiée"
+  },
+  
+  
+  
+  "Contact": {
+    "address": "Mahdia,Hopital Taher Sfar ,5116 ",
+    "phone": "+216 97 456 744",
+    "email": "infoadminmedico@gmail.com"
+  },
+  "Service": [
+    {
+      "icon": "fa fa-heartbeat",
+      "title": "Gestion d'Alveole",
+      "text": "La gestion des alvéoles de décès est essentielle dans les services funéraires, impliquant la coordination des espaces de conservation des corps. Cela garantit un traitement respectueux des défunts et un soutien approprié aux familles en deuil."
+    },
+    {
+      "icon": "fa fa-user-md",
+      "title": "Autopsies",
+      "text": "Notre équipe de professionnels hautement qualifiés est dédiée à la réalisation d'autopsies avec précision, respect et compassion. Nous travaillons en étroite collaboration avec les autorités médicales et légales pour garantir des procédures d'autopsie conformes aux normes les plus strictes."
+    },
+    {
+      "icon": "fa fa-group",
+      "title": "Expertises Médico-légales",
+      "text": "Nous offrons des services d'expertise médico-légale pour aider à éclaircir les circonstances entourant les décès et les blessures. Nos experts médico-légaux sont formés pour fournir des analyses objectives et impartiales pour soutenir les enquêtes judiciaires et médicales."
+    },
+    {
+      "icon": "fa fa-th-list",
+      "title": "Gestion Administrative",
+      "text": "Notre équipe administrative est là pour faciliter le processus de gestion des dossiers et des documents liés aux autopsies et aux expertises médico-légales. Nous nous engageons à assurer la confidentialité et la sécurité des informations tout en garantissant une communication claire et efficace avec nos clients."
+    }
+  ]
+}

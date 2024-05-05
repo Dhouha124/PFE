@@ -1,0 +1,45 @@
+#login {
+    padding: 80px 500;
+    min-height: 100vh; /* Définit la hauteur minimale du conteneur à 100% de la hauteur de l'écran */
+    background-color: rgba(202, 228, 235, 0.845); /* Applique la couleur de fond */
+    justify-content: center;
+    align-items: center;
+}
+
+#login .login-container {
+  border: 1px solid #ccc;
+  padding: 60px;
+  
+  border-radius: 5px;
+  background-color: white; /* Ajout de la couleur blanche pour l'arrière-plan */
+}
+h2{
+    display: flex;
+    color:  rgba(75, 177, 206, 0.845); ;
+    align-items: center;
+    justify-content: center;
+}
+#login input{
+  margin-bottom: 40px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#login button {
+    padding: 10px 20px ;
+  background-color: rgba(75, 177, 206, 0.845); 
+  color: #000000;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  display: block; /* Permet au bouton de remplir la largeur du formulaire */
+  margin: 20px auto;
+}
+
+#login button:hover {
+   
+  background-color: #0056b3;
+
+  
+}
