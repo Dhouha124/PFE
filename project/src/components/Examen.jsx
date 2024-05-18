@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as Components from './Components';
+import axios from 'axios';
 
 function Team() {
     const [signIn, toggle] = React.useState(true);
@@ -15,19 +16,120 @@ function Team() {
     const [Cindefunt,setCindefunt]= React.useState('');
     const [Nomdefunt, setNomdefunt]= React.useState('');
     const [Datedefunt, setDatedefunt]= React.useState('');
+    const [typeExpertise, settypeExpertise]= React.useState('');
+    const [typeExamen, settypeExamen]= React.useState('');
 
 
 
-
-
+    const [doctors, setDoctors] = useState([]); // State to store doctors
+    const [demandes, setDemande] = useState([]); // State to store doctors
+    const [expertises,setExpertise]=useState([]);
+    const [examen,setExamen]=useState([]);
     const handleChange = (event) => {
       setText(event.target.value);
     };
+
+    const handleAutopsySubmit = async (event) => {
+      event.preventDefault();
+      const autopsyData = {
+          cindefunt: Cindefunt,
+          nomdefunt: Nomdefunt,
+          datedefunt: Datedefunt,
+          datedemande: datedemande,
+          medecin: event.target.medecin.value,
+          lieu: event.target.lieu.value,
+      };
+      try {
+          await axios.post('http://localhost:3000/autopsie/add', autopsyData);
+          alert('Autopsy data submitted successfully');
+      } catch (error) {
+          console.error('Error submitting autopsy data', error);
+      }
+  };
+
+  const handleExaminationSubmit = async (event) => {
+      event.preventDefault();
+      const examinationData = {
+          nomPatient: nomPatient,
+          prenomPatient: prenomPatient,
+          datenaissancePatient: datenaissancePatient,
+          cinPatient: cinPatient,
+          telePatient: telePatient,
+          adressePatient: adressePatient,
+          typeExpertise: typeExpertise,
+          typeExamen: typeExamen, // Ensure typeExamen is included here
+          details: text,
+      };
+      try {
+          await axios.post('http://localhost:3000/medicolegal/add', examinationData);
+          alert('Examination data submitted successfully');
+      } catch (error) {
+          console.error('Error submitting examination data', error);
+      }
+  };
+
+
+
+    useEffect(() => {
+        // Fetch doctors when component mounts
+        fetchDoctors();
+        fetchDemande();
+        fetchExpertise();
+        fetchExamen();
+
+    }, []);
+
+    const fetchDoctors = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/type1/getall'); // Assuming this endpoint fetches the list of doctors
+            const data = await response.json();
+            // Update doctors state with fetched data
+
+            setDoctors(data); // Update doctors state with fetched data
+        } catch (error) {
+            console.error('Error fetching doctors:', error);
+        }
+    };
+    const fetchDemande = async () => {
+      try {
+          const response = await fetch('http://localhost:3000/type2/getall'); // Assuming this endpoint fetches the list of doctors
+          const data1 = await response.json();
+          // Update doctors state with fetched data
+
+          setDemande(data1); // Update doctors state with fetched data
+      } catch (error) {
+          console.error('Error fetching doctors:', error);
+      }
+  };
+  
+  const fetchExpertise = async () => {
+    try {
+        const response = await fetch('http://localhost:3000/type3/getall'); // Assuming this endpoint fetches the list of doctors
+        const data2 = await response.json();
+        // Update doctors state with fetched data
+
+        setExpertise(data2); // Update doctors state with fetched data
+    } catch (error) {
+        console.error('Error fetching doctors:', error);
+    }
+};
+   
+    const fetchExamen = async () => {
+      try {
+          const response = await fetch('http://localhost:3000/type4/getall'); // Assuming this endpoint fetches the list of doctors
+          const data3 = await response.json();
+          // Update doctors state with fetched data
+
+          setExamen(data3); // Update doctors state with fetched data
+      } catch (error) {
+          console.error('Error fetching doctors:', error);
+      }
+  };
     
      return(
          <Components.Container>
              <Components.SignUpContainer signinIn={signIn}>
-                 <Components.Form>
+                 <Components.Form onSubmit={handleAutopsySubmit}>
                  <Components.Div>
                     
                     <Components.Input
@@ -66,14 +168,18 @@ name='cindefunt'
    onChange={(e) => setDatedefunt(e.target.value)} 
    />
                      <Components.Label htmlFor="inputField">Nom de medecin:</Components.Label>
-                     <Components.Select>
-                     <Components.Option disabled>--choisir nom</Components.Option>
-      <Components.Option value="1">Abir Aissaoui Badraoui</Components.Option>
-      <Components.Option value="2">Mohamed Amine Mesrati</Components.Option>
-      <Components.Option value="3">Maroua Boussaid</Components.Option>
-      <Components.Option value="4">Meriem Boughattas</Components.Option>
-      </Components.Select>
-
+            <Components.Select>
+                <Components.Option >--choisir nom</Components.Option>
+                {doctors.map(doctor => (
+                    <Components.Option >{doctor.name}</Components.Option>
+                ))}
+            </Components.Select>
+            <Components.Label htmlFor="inputField">Lieu de demande  :</Components.Label>
+            <Components.Select>
+                <Components.Option >--choisir Lieu de demande  </Components.Option>{demandes.map(x => (
+                    <Components.Option >{x.demande}</Components.Option>
+                ))}
+            </Components.Select>
                      <Components.Label htmlFor="inputField">Date de demande :</Components.Label>
 
                      <Components.Input 
@@ -84,27 +190,13 @@ name='cindefunt'
                       onChange={(e) => setDatedemande(e.target.value)} 
                       />
 
-                     <Components.Label htmlFor="inputField">Lieu de demande  :</Components.Label>
-                     <Components.Select>
-                     <Components.Option disabled>--choisir lieu</Components.Option>
-      <Components.Option value="1">Tribunal de Première Instance de Mahdia</Components.Option>
-      <Components.Option value="2">Tribunal Cantonal de Mahdia </Components.Option>
-      <Components.Option value="3">Tribunal Cantonal de Boumerdes</Components.Option>
-      <Components.Option value="4">Poste de la Police de Ksour Essef</Components.Option>
-      <Components.Option value="5">Poste de la Police de Chebba</Components.Option>
-      <Components.Option value="6">Poste de la Police Judiciaire de Mahdia</Components.Option>
-      <Components.Option value="7">Poste de la Garde Nationale de Chorbène</Components.Option>
-      <Components.Option value="8">Tribunal Cantonal d'Eljem.</Components.Option>
-
-
-    </Components.Select>
                     
                      <Components.Button>Enregistrer</Components.Button>
                  </Components.Form>
              </Components.SignUpContainer>
 
              <Components.SignInContainer signinIn={signIn}>
-                  <Components.Form>
+                  <Components.Form onSubmit={handleExaminationSubmit}>
                       <Components.Title>Examen Medico-Légale</Components.Title>
                       <Components.Label htmlFor="inputField">Nom :</Components.Label>
 
@@ -159,26 +251,19 @@ name='cindefunt'
                       value={adressePatient}
                       onChange={(e) => setAdressePatient(e.target.value)} 
                       />
+                     
                      <Components.Label htmlFor="inputField">Type d'expertise  :</Components.Label>
-                     <Components.Select>
-                     <Components.Option disabled>--choisir service</Components.Option>
-      <Components.Option value="1">Agression sexuelle</Components.Option>
-      <Components.Option value="2">Violance</Components.Option>
-      <Components.Option value="3">Les accidents de circulation</Components.Option>
-      <Components.Option value="4">Responsabilités medicale</Components.Option>
-      </Components.Select>
-
-      <Components.Label htmlFor="inputField">Types d'examens médico-légaux  :</Components.Label>
-                     <Components.Select>
-                     <Components.Option disabled>--choisir service</Components.Option>
-      <Components.Option value="1">Examen externe</Components.Option>
-      <Components.Option value="2">Examen interne </Components.Option>
-      <Components.Option value="3">Toxicologie</Components.Option>
-      <Components.Option value="4">Examens complémentaires</Components.Option>
-      <Components.Option value="4">Anatomopathologie</Components.Option>
-
-
-    </Components.Select>
+            <Components.Select>
+                <Components.Option value={typeExpertise} onChange={(e) => settypeExpertise(e.target.value)} >--choisir type d'expertise </Components.Option>{expertises.map(y=> (
+                    <Components.Option >{y.expertise}</Components.Option>
+                ))}
+            </Components.Select>
+            <Components.Label htmlFor="inputField">Types d'examens médico-légaux   :</Components.Label>
+            <Components.Select>
+                <Components.Option value={typeExamen}onChange={(e) => settypeExamen(e.target.value)}  >--choisir type d'examen médico-légaux</Components.Option>{examen.map(z=> (
+                    <Components.Option >{z.examen}</Components.Option>
+                ))}
+            </Components.Select>
                       <Components.Textarea
                       type='text'
       value={text}

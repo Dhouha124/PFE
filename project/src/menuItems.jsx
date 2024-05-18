@@ -1,19 +1,24 @@
+
 export const menuItems = [
+  
     {
-      title: "Admin",
-      path: "",
+      
+      title: "Admin",      
+      path:"",
       submenus: [
         {
           title: "Ajouter utilisateur",
           path: "/Ajouter",
         },
+
         {
           title: "Modifier utilisateur",
-          path: "/Modifier",
+          path: "/AddUser",
         },
+
         {
-          title: "Supprimer utilisateur",
-          path: "/supprimer-utilisateur",
+          title: " recuperer Mot de passe",
+          path: "/motdepasse",
         },
       ],
     },

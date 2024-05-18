@@ -1,32 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const GestionDesBiens = () => {
-  const[CinDefunt,setCinDefunt]=useState("");
+  const [CinDefunt, setCinDefunt] = useState("");
   const [nomDefunt, setNomDefunt] = useState("");
   const [prenomDefunt, setPrenomDefunt] = useState("");
   const [bijoux, setBijoux] = useState("");
   const [argent, setArgent] = useState("");
-  const [documents, setDocuments] = useState("");
   const [autresBiens, setAutresBiens] = useState("");
+  const [donnees, setDonnees] = useState([]);
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit =async (event) => {
     event.preventDefault();
-    // Vous pouvez envoyer les données des biens du défunt à votre serveur ou effectuer toute autre action requise
-    console.log("Cin du defunt:",CinDefunt);
-    console.log("Nom du défunt:", nomDefunt);
-    console.log("Prénom du défunt:", prenomDefunt);
-    console.log("Bijoux:", bijoux);
-    console.log("Argent:", argent);
-    console.log("Documents:", documents);
-    console.log("Autres biens:", autresBiens);
+    const formData = {
+      CinDefunt,
+      nomDefunt,
+      prenomDefunt,
+      bijoux,
+      argent,
+      autresBiens,
+    };
+    setDonnees([...donnees, formData]);
+    try {
+      const response = await fetch("http://localhost:3000/biens/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+
+    const data = await response.json();
+
+      console.log("Données enregistrées :", formData);
     // Réinitialiser le formulaire après soumission
     setCinDefunt("");
     setNomDefunt("");
     setPrenomDefunt("");
     setBijoux("");
     setArgent("");
-    setDocuments("");
     setAutresBiens("");
+  
+}
+catch (error) {
+  console.error("Error submitting form:", error);
+}
+};
+  
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("DataBiens");
+    if (storedData) {
+      setDonnees(JSON.parse(storedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("DataBiens", JSON.stringify(donnees));
+  }, [donnees]);
+
+  const handleDataBiens = () => {
+    navigate("/tableau-enregistrements", { state: { donnees } });
   };
 
   return (
@@ -34,7 +70,7 @@ export const GestionDesBiens = () => {
       <div className="container">
         <div className="row">
           <div className="col-xs-12 col-md-6">
-          <h5>Gestion les biens du défunt</h5>
+            <h5>Gestion des biens du défunt</h5>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="CinDefunt">cin du défunt :</label>
@@ -112,11 +148,12 @@ export const GestionDesBiens = () => {
               
               <button type="submit" className="btn-pri">Enregistrer</button>
               <button type="reset" className="btn-sec" >Annuler</button>
-             
+              <button onClick={handleDataBiens} style={{ fontSize:"25",display: "block", margin: "auto 300",backgroundColor:"steelblue" }}>Voir les détails</button>
+
             </form>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}; 

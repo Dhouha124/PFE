@@ -1,0 +1,56 @@
+.login-container {
+    max-width: 400px;
+    margin: 100 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .login-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .login-container form div {
+    margin-bottom: 15px;
+  }
+  
+  .login-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .login-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+  .login-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .login-container button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .login-container button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .login-container button[type="button"] {
+    background-color: #ccc;
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  .login-container button[type="button"]:hover {
+    background-color: #999;
+  }
+  

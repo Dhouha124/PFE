@@ -1,5 +1,6 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import React, { useState } from "react";
 import Lottie from 'lottie-react';
 import anim from './anim.json';
 
@@ -9,34 +10,71 @@ export const GestionAlveoles = () => {
   const [dateDeces, setDateDeces] = useState("");
   const [lieuDeces, setLieuDeces] = useState("");
   const [causeDeces, setCauseDeces] = useState("");
+  const navigate = useNavigate();
+  const [donnees, setDonnees] = useState([]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Vous pouvez envoyer les données de l'alvéole à votre serveur ou effectuer toute autre action requise
-    console.log("Numéro de l'alvéole:", numero);
-    console.log("Nom du défunt:", nomDefunt);
-    console.log("Date de décès:", dateDeces);
-    console.log("Lieu de décès:", lieuDeces);
-    console.log("Cause de décès:", causeDeces);
-    // Réinitialiser le formulaire après soumission
+
+    // Create an object with the form data
+    const formData = {
+      numero,
+      nomDefunt,
+      dateDeces,
+      lieuDeces,
+      causeDeces,
+    };
+
+    setDonnees([...donnees, formData]);
+  
+  
+  try {
+    const response = await fetch("http://localhost:3000/alveole/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    console.log(data.message);
+
     setNumero("");
     setNomDefunt("");
     setDateDeces("");
     setLieuDeces("");
     setCauseDeces("");
+  
+  } catch (error) {
+    console.error("Error submitting form:", error);
+  }
+};
+
+useEffect(() => {
+  const storedData = localStorage.getItem("alveoleData");
+  if (storedData) {
+    setDonnees(JSON.parse(storedData));
+  }
+}, []);
+
+useEffect(() => {
+  localStorage.setItem("alveoleData", JSON.stringify(donnees));
+}, [donnees]);
+
+  const handleDetailsPage = () => {
+    navigate("/detail", { state: { donnees } });
   };
 
   return (
-
     <div id="GestionAlveoles">
-     <div style={{ display: "flex", flexDirection: "columun" }}>
-           
-      <div className="container" >
-    
-        <div className="row">
-          <div className="col-xs-12 col-md-6">
-            <h6>Ajouter le Décès aux Alvéoles</h6>
-            <form onSubmit={handleSubmit}>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12 col-md-6">
+              <h6>Ajouter le Décès aux Alvéoles</h6>
+              <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="numero">Numéro de l'alvéole :</label>
                 <input
@@ -97,18 +135,22 @@ export const GestionAlveoles = () => {
                   required
                 ></textarea>
               </div>
+             
               <button type="submit" className="btn-primary">Enregistrer</button>
               <button type="reset" className="btn-second" >Annuler</button>
-            </form>
+              
+              <button onClick={handleDetailsPage} >Voir les détails</button>
+              
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-      
-     <div  style={{ width: "70%" , height:"50%"}}>
-                
-                <Lottie animationData={anim} />
-            </div>
-            
+        
+        <div style={{ position: 'absolute', top: 0, right: 0, width: '72%', height: '50%', zIndex: 1 }}>
+  <Lottie animationData={anim} /> 
+</div>
+
+        
       </div>
     </div>
   );

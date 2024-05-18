@@ -31,6 +31,23 @@ const MenuItems = ({ items, depthLevel }) => {
     setDropdown(false);
   };
 
+  const handleClickSubMenu = (path) => {
+    if (!path) {
+      console.error("Aucun chemin défini pour ce sous-menu");
+      return;
+    }
+
+    // Implémentez les actions pour les sous-menus avec des chemins définis
+    console.log("Cliqué sur :", path);
+    if (path === "/Ajouter") {
+      // Afficher l'interface pour ajouter un élément
+    } else if (path === "/AddUser") {
+      // Afficher l'interface pour modifier un élément
+    } else if (path === "/motdepasse") {
+      // Actions pour supprimer un élément
+    }
+  };
+
   return (
     <li
       className="menu-items"
@@ -46,12 +63,14 @@ const MenuItems = ({ items, depthLevel }) => {
             aria-expanded={dropdown ? "true" : "false"}
             onClick={() => setDropdown((prev) => !prev)}
           >
-            {items.title} {depthLevel > 0 ? <span>&raquo;</span> : <span className="arrow" />}
+             {items.title} {depthLevel > 0 ? <span>&raquo;</span> : <span className="arrow" />}
           </button>
           <Dropdown depthLevel={depthLevel} submenus={items.submenus} dropdown={dropdown} />
         </>
       ) : (
-        <a href="/Ajouter">{items.title}</a>
+        <a href={items.path} onClick={() => handleClickSubMenu(items.path)}>
+          {items.title}
+        </a>
       )}
     </li>
   );

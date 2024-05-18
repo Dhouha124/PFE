@@ -1,0 +1,84 @@
+#update {
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center;
+    height: 150vh;
+  }
+  
+  #update .container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 70%;
+    max-width: 600px; /* Limite la largeur du formulaire */
+  }
+  
+  #update .form-header {
+    margin-bottom: 20px;
+  }
+  
+  #update .form-header h2 {
+    font-size: 24px;
+    color: #0f7764;
+  }
+  
+  #update .form-group {
+    margin-bottom: 20px;
+  }
+  #update .form-control {
+    margin-bottom: 20px;
+    
+  }
+  
+  #update .form-group label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  #update .form-group input[type="text"],
+  #update .form-group input[type="number"],
+  #update .form-group input[type="date"],
+  #update .form-group input[type="email"],
+  #update .form-group input[type="tel"],
+  #update .form-group input[type="password"],
+  #update .form-group select,
+  #update .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  #update  .btn {
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #update .btn button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    background-color: #0a6454;
+    color: #fff;
+    cursor: pointer;
+    margin:2;
+    cursor: pointer;
+    
+  }
+   #update .btn button[type="submit"]:hover {
+background-color: gray;
+   }
+  #update .btn button[type="reset"]:hover {
+    background-color: #4e9da7;
+  }
+  
+  #update  .btn button[type="reset"] {
+    margin-right: 10px;
+    background-color: #75c5ba;
+  }
+  

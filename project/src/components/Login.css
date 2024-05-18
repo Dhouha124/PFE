@@ -10,12 +10,13 @@
   border: 1px solid #ccc;
   padding: 60px;
   
-  border-radius: 5px;
+  border-radius: 25px;
   background-color: white; /* Ajout de la couleur blanche pour l'arrière-plan */
 }
 h2{
+
     display: flex;
-    color:  rgba(75, 177, 206, 0.845); ;
+    color:  rgba(75, 177, 206, 0.845); 
     align-items: center;
     justify-content: center;
 }

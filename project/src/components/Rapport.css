@@ -1,0 +1,149 @@
+body {
+    
+  background-color: #ffffff;
+  position: relative;
+  color: rgb(0, 0, 0);
+ 
+}
+
+
+#rapporto .header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: rgb(0, 0, 0);
+ 
+}
+#rapporto .left, .right {
+  text-align: left;
+  font-weight: bold;
+  font-family: serif;
+}
+
+#rapporto .roww p {
+  margin-bottom: 15px;
+  text-align: left;
+  color:black;
+
+}
+#rapporto h1{
+  font-size:24px;
+  text-align:center;
+  margin-bottom: 10px; 
+  border-bottom: 1px solid #000;
+  width: 40%; 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+#rapporto .liste{
+  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#rapporto h4{
+  text-align: left;
+  margin-bottom: 10px; 
+  border-bottom: 1px solid #000;
+  width: 180px; 
+  
+}
+#rapporto h3 {
+  text-align: center;
+  margin-bottom: 10px; 
+  border-bottom: 1px solid #000;
+  width: 30%; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+#rapporto li{
+  text-align: left;
+}
+#rapporto .arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+}
+#rapporto .ecrit {
+  color: #000;
+  background: transparent;
+  font-size: inherit;
+  width: auto;
+  border: none;
+  
+  
+  
+}
+#rapporto .ecrit2{
+  width:90% ;
+  background:transparent;
+  position: absolute;
+  color: #000;
+  border: none;
+}
+#rapporto .ecrit3{
+  color: #000;
+  background: transparent;
+  border: none;
+  width: 42px;
+}
+#rapporto .ecrit3::-webkit-inner-spin-button,
+.input-without-arrows::-webkit-outer-spin-button {
+  -webkit-appearance:none;
+  margin: 0;
+}
+#rapporto .ecrit::-webkit-inner-spin-button,
+.input-without-arrows::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+#rapporto .batouna{
+  margin-right: 15px;
+  margin-top: 10px;
+  background-color: black;
+  color: #ffffff;
+  margin-left: 50%;
+  border: none;
+  
+}
+#rapporto .batouna:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#rapporto .batouna:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);  
+  margin-top: 10px;
+}
+#rapporto .roww{
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  padding: 20px;
+  display: flex;
+}
+#rapporto span{
+ min-width: 100px;
+width: auto;
+padding: 20px;
+font-size: 16px;
+}
+#rapporto .foot{
+  position:relative;
+    font-weight: bold;
+      right: -90%;
+      margin: 20px;
+      padding: 10px 20px;
+      border-radius: 5px;
+
+}
+
+#rapporto .ecrit4{
+  color: #000;
+  background: transparent;
+  border: none;
+  width: 15%;
+}
+#rapporto span{
+  padding: 30%;
+}

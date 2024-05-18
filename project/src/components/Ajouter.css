@@ -1,0 +1,87 @@
+#ajouter {
+    background: url(../img/imgg.jpg) center center no-repeat;
+    background-color: #e5e5e5;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  
+   padding: 100;
+    min-height: 150vh; /* Ajuster la hauteur pour remplir l'écran */
+  }
+  
+  #ajouter .user-form-container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%; /* Réduire légèrement la largeur du formulaire */
+    max-width: 600px; /* Limiter la largeur maximale */
+  }
+  
+  #ajouter .form-header {
+    margin-bottom: 20px;
+  }
+  
+  #ajouter .form-header h2 {
+    font-size: 24px;
+    color: #0f7764;
+  }
+  
+  #ajouter .form-group {
+    margin-bottom: 20px;
+  }
+  #ajouter .form-container {
+    margin-bottom: 20px;
+  }
+  
+  #ajouter .form-group label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  #ajouter input[type="text"],
+  #ajouter input[type="number"],
+  #ajouter input[type="date"],
+  #ajouter input[type="email"],
+  #ajouter input[type="tel"],
+  #ajouter input[type="password"],
+  #ajouter select,
+  #ajouter textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px; /* Ajouter une marge en bas */
+  }
+  
+  #ajouter .btn {
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #ajouter .btn button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    background-color: #29685f;
+    color: #fff;
+    cursor: pointer;
+  
+  }
+  
+  #ajouter .btn button[type="reset"] {
+    margin-right: 10px;
+    background-color: #a99799;
+  }
+  #ajouter .btn button[type="reset"]:hover {
+    
+    background-color: #cadbdb;
+  }  #ajouter .btn button[type="submit"]:hover {
+    
+    background-color: #cadbdb;
+  }
+  
